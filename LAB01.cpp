@@ -4,9 +4,10 @@
 
 using namespace std;
 
-
-class IntArray {
-public:
+//class to create an array
+class IntArray 
+{
+    public:
         IntArray(int size);
         ~IntArray();
         int & operator[](int i) const;
@@ -15,40 +16,60 @@ public:
         int * begin();
         int * end();
 
-private:
+    private:
         int len;
         int * data;
 };
 
-
-IntArray::IntArray(int size) {
+//First, Class will allow access to main function to use IntArray to create new array and determine how large the array will be . 
+//Second, Initializes data pointer to become an array, not sure yet. 
+IntArray::IntArray(int size) 
+{
     len = size;
     data = new int[size];
 }
-IntArray::~IntArray() {
+
+//initializes the IntArray Constructor
+IntArray::~IntArray() 
+{
 }
 
-int & IntArray::operator[](int i) const{
+//overloading index operator to search array for i, still confused on operators.. 
+int & IntArray::operator[](int i) const
+{
     return data[i];
 }
 
-int IntArray::size() const{
+//saves the constant length of the array
+int IntArray::size() const
+{
     return len;
 }
 
-void IntArray::fill(int n) {
-    for (int i = 0; i < len ; i++) {
-    data[i] = n;
+//allows the storing of values inside the index of array type. It fills all index spots with same number in constructed array
+void IntArray::fill(int n) 
+{
+    for (int i = 0; i < len ; i++) 
+    {
+        data[i] = n;
     }
 }
 
-int * IntArray::begin() {
+//pointers used on begin & end functions to allows reference to personal array,Pointers will be used to test if they function properly in main.
+int * IntArray::begin() 
+{
     return data;
 }
-int * IntArray::end() {
+
+//will be used to test if pointers function 
+int * IntArray::end() 
+{
     return data + len;
 }
-int main(int argc, char * args[]) {
+
+
+int main(int argc, char * args[]) 
+{
         IntArray a(3);
 
         a[0] = 10;
@@ -79,4 +100,7 @@ int main(int argc, char * args[]) {
         ++it;
         assert(it == a.end());
 
-        cout << "All tests passed." << endl
+        cout << "All tests passed." << endl;
+        
+        return 0;
+}
